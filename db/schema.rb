@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_11_122818) do
+ActiveRecord::Schema.define(version: 2021_11_11_174547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.boolean "frequence"
+    t.bigint "class_school_id", null: false
+    t.bigint "student_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["class_school_id"], name: "index_attendances_on_class_school_id"
+    t.index ["student_id"], name: "index_attendances_on_student_id"
+  end
 
   create_table "class_schools", force: :cascade do |t|
     t.integer "timetable"
@@ -51,6 +61,8 @@ ActiveRecord::Schema.define(version: 2021_11_11_122818) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attendances", "class_schools"
+  add_foreign_key "attendances", "students"
   add_foreign_key "students", "class_schools"
   add_foreign_key "students", "users"
 end

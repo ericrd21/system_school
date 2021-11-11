@@ -1,0 +1,52 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <%= render partial: 'shared/admin/page_title', locals: { title: 'Frequencia' } %>
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-lg-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h5 class="m-0">Listagem</h5>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Turma</th>
+                    <th scope="col">Frequencia</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @attendances.each do |attendance| %>
+                    <tr>
+                      <th scope="row"><%= attendance.id %></th>
+                      <td><%= attendance.student.name %></td>
+                      <td><%= attendance.class_school.name %></td>
+                      <td><%= attendance.frequence %></td>
+                      <td>
+                        <%= link_to 'Detalhes', admin_attendance_path(attendance), class: 'btn btn-warning' %>
+                        <%= link_to 'Editar', edit_admin_attendance_path(attendance), class: 'btn btn-primary' %>
+                        <%= link_to 'Excluir', admin_attendance_path(attendance), method: :delete, class: 'btn btn-danger', data: { confirm: 'Deseja realmente excluir?' } %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= link_to 'Novo', new_admin_attendance_path, class: 'btn btn-primary'%>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-6 -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
