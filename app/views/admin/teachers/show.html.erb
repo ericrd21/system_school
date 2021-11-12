@@ -13,34 +13,29 @@
             <div class="card-body">
               <p>
                 <strong>Name:</strong>
-                <%= @student.name %>
+                <%= @teacher.name %>
               </p>
 
               <p>
                 <strong>Address:</strong>
-                <%= @student.address %>
+                <%= @teacher.address %>
               </p>
 
               <p>
                 <strong>Phone:</strong>
-                <%= @student.phone %>
+                <%= @teacher.phone %>
               </p>
 
               <p>
-                <strong>Birthday:</strong>
-                <%= @student.birthday %>
+                <strong>Discipline:</strong>
+                <%= @teacher.discipline.name %>
               </p>
 
               <p>
                 <strong>User:</strong>
-                <%= @student.user.email %>
+                <%= @teacher.user.email %>
               </p>
-
-              <p>
-                <strong>Class school:</strong>
-                <%= @student.class_school.name %>
-              </p>
-              <%= link_to 'Voltar', admin_students_path, class: 'btn btn-primary'%>
+              <%= link_to 'Voltar', admin_teachers_path, class: 'btn btn-primary'%>
             </div>
           </div>
         </div>

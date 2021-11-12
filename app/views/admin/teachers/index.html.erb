@@ -1,0 +1,57 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <%= render partial: 'shared/admin/page_title', locals: { title: 'Professor(a)' } %>
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-lg-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h5 class="m-0">Listagem</h5>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Disciplina</th>
+                    <th scope="col">Email</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @teachers.each do |teacher| %>
+                    <tr>
+                      <th scope="row"><%= teacher.id %></th>
+                      <td><%= teacher.name %></td>
+                      <td><%= teacher.address %></td>
+                      <td><%= teacher.phone %></td>
+                      <td><%= teacher.discipline.name %></td>
+                      <td><%= teacher.user.email %></td>
+                      <td>
+                        <%= link_to 'Detalhes', admin_teacher_path(teacher), class: 'btn btn-warning' %>
+                        <%= link_to 'Editar', edit_admin_teacher_path(teacher), class: 'btn btn-primary' %>
+                        <%= link_to 'Excluir', admin_teacher_path(teacher), method: :delete, class: 'btn btn-danger', data: { confirm: 'Deseja realmente excluir?' } %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= link_to 'Novo', new_admin_teacher_path, class: 'btn btn-primary'%>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-6 -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

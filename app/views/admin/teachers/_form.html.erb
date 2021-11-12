@@ -1,9 +1,8 @@
-<%= simple_form_for [:admin, @student] do |f| %>
+<%= simple_form_for [:admin, @teacher] do |f| %>
     <%= f.input :name %>
     <%= f.input :address %>
     <%= f.input :phone %>
-    <%= f.input :birthday, as: :date, html5:true %>
+    <%= f.association :discipline, label_method: :name %>
     <%= f.association :user, label_method: :email %>
-    <%= f.association :class_school, label_method: :name %>
     <%= f.button :submit, class: 'btn btn-primary mt-2' %>
 <% end %>
